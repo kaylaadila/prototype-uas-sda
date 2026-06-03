@@ -65,4 +65,8 @@ void hitungTanggalSelesai(char *tglMasuk, char *tglSelesai, int tambahHari);
 int compareDate(char *tgl1, char *tgl2);
 int validasiTanggal(char *tgl);
 
+// EDIT (edit.c) - FITUR BARU
+Laundry* cariLaundryById(Queue* q, int id);
+void editPesanan(Queue* q, int id, char* namaBaru, float beratBaru, char* jenisBaru);
+
 #endif
