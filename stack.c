@@ -16,27 +16,26 @@ void pushStack(Stack* s, Laundry* node) {
 
 void tampilStack(Stack* s) {
     if (isEmptyStack(s)) {
-        printf("\n[ RIWAYAT KOSONG ]\n");
+        printf("\nRiwayat kosong\n");
         return;
     }
     
-    printf("\n+-------------------------------------------------------------------+\n");
-    printf("|                         DAFTAR RIWAYAT                            |\n");
-    printf("+-------------------------------------------------------------------+\n");
-    printf("| No | ID | Nama            | Jenis   | Berat | Harga    | Status  |\n");
-    printf("+-------------------------------------------------------------------+\n");
-    
+    printf("\n=== RIWAYAT ===\n");
     int no = 1;
     for (int i = s->top; i >= 0; i--) {
-        printf("| %-2d | %-2d | %-15s | %-7s | %5.1f | Rp %-6d | SIAP    |\n", 
-               no++, 
-               s->data[i]->id, 
-               s->data[i]->nama, 
-               s->data[i]->jenis, 
-               s->data[i]->berat, 
-                s->data[i]->harga);
+        printf("%d. ID:%d | %s | %s | %.1fkg | Rp%d\n", 
+               no++, s->data[i]->id, s->data[i]->nama, 
+               s->data[i]->jenis, s->data[i]->berat, s->data[i]->harga);
     }
-    printf("+-------------------------------------------------------------------+\n");
-    printf("| Total transaksi: %-42d |\n", s->top + 1);
-    printf("+-------------------------------------------------------------------+\n");
+    
+    int maxIdx = 0;
+    for (int i = 1; i <= s->top; i++) {
+        if (s->data[i]->harga > s->data[maxIdx]->harga) {
+            maxIdx = i;
+        }
+    }
+    
+    printf("\n=== TRANSAKSI TERBANYAK ===\n");
+    printf("ID: %d | Nama: %s | Total: Rp%d\n", 
+           s->data[maxIdx]->id, s->data[maxIdx]->nama, s->data[maxIdx]->harga);
 }

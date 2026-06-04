@@ -42,10 +42,7 @@ void lihatHarga() {
 
 void simpanData(Queue* q, Stack* s) {
     FILE* f = fopen(FILE_DATA, "w");
-    if (!f) {
-        printf("Gagal menyimpan data!\n");
-        return;
-    }
+    if (!f) return;
     
     Laundry* curr = q->front;
     while (curr) {
@@ -62,7 +59,6 @@ void simpanData(Queue* q, Stack* s) {
                 s->data[i]->berat, s->data[i]->harga,
                 s->data[i]->tanggalMasuk, s->data[i]->tanggalSelesai);
     }
-    
     fclose(f);
     printf("Data berhasil disimpan\n");
 }
@@ -76,31 +72,27 @@ void loadData(Queue* q, Stack* s) {
     
     char tipe;
     int id, harga, maxId = 0;
-    char nama[50], jenis[10], tanggalMasuk[11], tanggalSelesai[11];
+    char nama[50], jenis[10], tglMasuk[11], tglSelesai[11];
     float berat;
     
     while (fscanf(f, " %c|%d|%[^|]|%[^|]|%f|%d|%[^|]|%[^\n]\n", 
                   &tipe, &id, nama, jenis, &berat, &harga, 
-                  tanggalMasuk, tanggalSelesai) == 8) {
+                  tglMasuk, tglSelesai) == 8) {
         Laundry* baru = (Laundry*)malloc(sizeof(Laundry));
         baru->id = id;
         strcpy(baru->nama, nama);
         strcpy(baru->jenis, jenis);
         baru->berat = berat;
         baru->harga = harga;
-        strcpy(baru->tanggalMasuk, tanggalMasuk);
-        strcpy(baru->tanggalSelesai, tanggalSelesai);
+        strcpy(baru->tanggalMasuk, tglMasuk);
+        strcpy(baru->tanggalSelesai, tglSelesai);
         baru->next = NULL;
         
-        if (tipe == 'Q') {
-            enqueue(q, baru);
-        } else if (tipe == 'S') {
-            pushStack(s, baru);
-        }
+        if (tipe == 'Q') enqueue(q, baru);
+        else if (tipe == 'S') pushStack(s, baru);
         
         if (id > maxId) maxId = id;
     }
-    
     nextId = maxId + 1;
     fclose(f);
     printf("Data berhasil dimuat\n");

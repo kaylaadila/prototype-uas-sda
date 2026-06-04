@@ -9,7 +9,8 @@ int hitungHarga(float berat, char* jenis) {
 }
 
 void initQueue(Queue* q) {
-    q->front = q->rear = NULL;
+    q->front = NULL;
+    q->rear = NULL;
     q->count = 0;
 }
 
@@ -21,7 +22,8 @@ void enqueue(Queue* q, Laundry* node) {
     if (!node) return;
     node->next = NULL;
     if (isEmptyQueue(q)) {
-        q->front = q->rear = node;
+        q->front = node;
+        q->rear = node;
     } else {
         q->rear->next = node;
         q->rear = node;

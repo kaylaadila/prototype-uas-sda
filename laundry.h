@@ -32,41 +32,31 @@ typedef struct {
 
 extern int nextId;
 
-// QUEUE (queue.c)
 void initQueue(Queue* q);
 int isEmptyQueue(Queue* q);
 void enqueue(Queue* q, Laundry* node);
 Laundry* dequeueByID(Queue* q, int id);
 void tampilQueue(Queue* q);
 
-// STACK (stack.c)
 void initStack(Stack* s);
 int isEmptyStack(Stack* s);
 void pushStack(Stack* s, Laundry* node);
 void tampilStack(Stack* s);
-void tampilTransaksiTerbanyak(Stack* s);
 
-// SORTING (sorting.c)
 void shellSort(Queue* q);
-void tampilUrutBerdasarkanBeratDariQueue(Queue *q);
+void tampilUrutBerdasarkanBerat(Queue *q);
 void quickSortByDate(Laundry* arr[], int low, int high);
+void tampilJadwal(Queue* q, Stack* s);
 
-// FILE I/O (fileio.c)
 int login();
 void lihatHarga();
 void simpanData(Queue* q, Stack* s);
 void loadData(Queue* q, Stack* s);
 
-// UTILITY (util.c)
 int hitungHarga(float berat, char* jenis);
-void tampilJadwal(Queue* q, Stack* s);
 void freeAllMemory(Queue* q, Stack* s);
 void hitungTanggalSelesai(char *tglMasuk, char *tglSelesai, int tambahHari);
-int compareDate(char *tgl1, char *tgl2);
 int validasiTanggal(char *tgl);
-
-// EDIT (edit.c) - FITUR BARU
-Laundry* cariLaundryById(Queue* q, int id);
-void editPesanan(Queue* q, int id, char* namaBaru, float beratBaru, char* jenisBaru);
+int compareDate(char *tgl1, char *tgl2);
 
 #endif
