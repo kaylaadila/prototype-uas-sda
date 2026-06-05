@@ -38,7 +38,7 @@ void shellSort(Queue* q) {
     arr[count-1]->next = NULL;
     q->rear = arr[count-1];
     
-    printf("\nAntrian diurutkan: EXPRESS dulu, baru REGULER\n");
+    printf("\n[Shell Sort] Antrian: EXPRESS dulu, baru REGULER\n");
 }
 
 void mergeByWeight(Laundry* arr[], int left, int mid, int right) {
@@ -90,17 +90,16 @@ void tampilUrutBerdasarkanBerat(Queue *q) {
     
     mergeSortByWeight(arr, 0, total - 1);
     
-    printf("\n=== SORTING BERDASARKAN BERAT (TERBERAT -> TERINGAN) ===\n");
-    printf("No  Nama            Berat    Harga      Rekomendasi Mesin\n");
-    printf("--- --------------- -------- ---------- -----------------\n");
+    printf("\n=== SORTING BERAT (TERBERAT -> TERINGAN) ===\n");
+    printf("No  Nama            Berat    Harga      Mesin\n");
+    printf("--- --------------- -------- ---------- -----\n");
     
     for (int i = 0; i < total; i++) {
         char mesin[20];
-        if (arr[i]->berat <= 5) strcpy(mesin, "Mesin Kecil");
-        else if (arr[i]->berat <= 8) strcpy(mesin, "Mesin Sedang");
-        else if (arr[i]->berat <= 12) strcpy(mesin, "Mesin Besar");
-        else strcpy(mesin, "Split Load");
-        
+        if (arr[i]->berat <= 5) strcpy(mesin, "Kecil");
+        else if (arr[i]->berat <= 8) strcpy(mesin, "Sedang");
+        else if (arr[i]->berat <= 12) strcpy(mesin, "Besar");
+        else strcpy(mesin, "Split");
         printf("%-3d %-15s %-8.1f %-10d %s\n", i+1, arr[i]->nama, arr[i]->berat, arr[i]->harga, mesin);
     }
     free(arr);

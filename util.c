@@ -1,5 +1,39 @@
 #include "laundry.h"
 
+void bersihkanBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+int bacaInt(char *pesan) {
+    int nilai;
+    if (strlen(pesan) > 0) printf("%s", pesan);
+    while (scanf("%d", &nilai) != 1) {
+        bersihkanBuffer();
+        printf("Input harus angka! ");
+        if (strlen(pesan) > 0) printf("%s", pesan);
+    }
+    bersihkanBuffer();
+    return nilai;
+}
+
+float bacaFloat(char *pesan) {
+    float nilai;
+    printf("%s", pesan);
+    while (scanf("%f", &nilai) != 1) {
+        bersihkanBuffer();
+        printf("Input harus angka! %s", pesan);
+    }
+    bersihkanBuffer();
+    return nilai;
+}
+
+void bacaString(char *pesan, char *target, int maxLen) {
+    printf("%s", pesan);
+    fgets(target, maxLen, stdin);
+    target[strcspn(target, "\n")] = 0;
+}
+
 void hitungTanggalSelesai(char *tglMasuk, char *tglSelesai, int tambahHari) {
     int day, month, year;
     sscanf(tglMasuk, "%d/%d/%d", &day, &month, &year);
@@ -28,8 +62,8 @@ int validasiTanggal(char *tgl) {
     int day, month, year;
     int jumlah = sscanf(tgl, "%d/%d/%d", &day, &month, &year);
     
-    if (jumlah != 3) {
-        printf("Format salah! Gunakan DD/MM/YYYY\n");
+    if (jumlah != 3 || strlen(tgl) != 10) {
+        printf("Format salah! Gunakan DD/MM/YYYY (contoh: 15/11/2026)\n");
         return 0;
     }
     if (year < 1900 || year > 2100) {
@@ -47,7 +81,7 @@ int validasiTanggal(char *tgl) {
         daysInMonth[1] = 29;
     }
     if (day > daysInMonth[month - 1]) {
-        printf("Bulan %d hanya memiliki %d hari\n", month, daysInMonth[month - 1]);
+        printf("Bulan %d hanya %d hari\n", month, daysInMonth[month - 1]);
         return 0;
     }
     return 1;
@@ -104,5 +138,5 @@ void freeAllMemory(Queue* q, Stack* s) {
     q->rear = NULL;
     q->count = 0;
     s->top = -1;
-    printf("\nMemori dibebaskan: %d node laundry\n", total);
+    printf("\nMemori dibebaskan: %d node\n", total);
 }

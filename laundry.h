@@ -59,4 +59,9 @@ void hitungTanggalSelesai(char *tglMasuk, char *tglSelesai, int tambahHari);
 int validasiTanggal(char *tgl);
 int compareDate(char *tgl1, char *tgl2);
 
+void bersihkanBuffer();
+int bacaInt(char *pesan);
+float bacaFloat(char *pesan);
+void bacaString(char *pesan, char *target, int maxLen);
+
 #endif

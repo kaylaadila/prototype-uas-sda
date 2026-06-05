@@ -30,27 +30,23 @@ int main() {
             printf("+====================+\n");
             printf("Pilih: ");
             
-            scanf("%d", &pilih);
+            pilih = bacaInt("");
             
             if (pilih == 1) {
                 char nama[50], jenis[10], tglMasuk[11], tglSelesai[11];
-                int j;
                 float berat;
+                int j;
                 
-                printf("\nNama: ");
-                scanf(" %[^\n]", nama);
-                printf("Berat (kg): ");
-                scanf("%f", &berat);
+                bacaString("Nama: ", nama, MAX_NAMA);
+                berat = bacaFloat("Berat (kg): ");
                 if (berat < 2) berat = 2;
-                printf("Jenis (1.Reguler/2.Express): ");
-                scanf("%d", &j);
+                j = bacaInt("Jenis (1.Reguler/2.Express): ");
                 if (j == 1) strcpy(jenis, "reguler");
                 else strcpy(jenis, "express");
                 
                 int valid = 0;
                 while (!valid) {
-                    printf("Tanggal Masuk (DD/MM/YYYY): ");
-                    scanf("%s", tglMasuk);
+                    bacaString("Tanggal Masuk (DD/MM/YYYY): ", tglMasuk, 11);
                     if (validasiTanggal(tglMasuk)) valid = 1;
                 }
                 
@@ -75,10 +71,7 @@ int main() {
                 if (isEmptyQueue(&antrian)) {
                     printf("\nAntrian kosong\n");
                 } else {
-                    int id;
-                    printf("\nMasukkan ID Laundry: ");
-                    scanf("%d", &id);
-                    
+                    int id = bacaInt("Masukkan ID Laundry: ");
                     Laundry* proses = dequeueByID(&antrian, id);
                     if (proses) {
                         pushStack(&riwayat, proses);
@@ -101,12 +94,7 @@ int main() {
                         curr = curr->next;
                     }
                     
-                    int id, j;
-                    char namaBaru[50], jenisBaru[10];
-                    float beratBaru;
-                    
-                    printf("\nMasukkan ID yang akan diedit: ");
-                    scanf("%d", &id);
+                    int id = bacaInt("\nMasukkan ID yang akan diedit: ");
                     
                     Laundry* target = antrian.front;
                     while (target && target->id != id) target = target->next;
@@ -114,18 +102,15 @@ int main() {
                     if (!target) {
                         printf("\nID %d tidak ditemukan\n", id);
                     } else {
-                        printf("\nDATA LAMA:\n");
-                        printf("  Nama: %s\n", target->nama);
-                        printf("  Berat: %.1f kg\n", target->berat);
-                        printf("  Jenis: %s\n\n", target->jenis);
+                        char namaBaru[50], jenisBaru[10];
+                        float beratBaru;
+                        int j;
                         
-                        printf("Nama baru: ");
-                        scanf(" %[^\n]", namaBaru);
-                        printf("Berat baru (kg): ");
-                        scanf("%f", &beratBaru);
+                        printf("\nDATA LAMA: %s | %.1f kg | %s\n", target->nama, target->berat, target->jenis);
+                        bacaString("Nama baru: ", namaBaru, MAX_NAMA);
+                        beratBaru = bacaFloat("Berat baru (kg): ");
                         if (beratBaru < 2) beratBaru = 2;
-                        printf("Jenis baru (1.Reguler/2.Express): ");
-                        scanf("%d", &j);
+                        j = bacaInt("Jenis baru (1.Reguler/2.Express): ");
                         if (j == 1) strcpy(jenisBaru, "reguler");
                         else strcpy(jenisBaru, "express");
                         
@@ -139,8 +124,6 @@ int main() {
                         
                         simpanData(&antrian, &riwayat);
                         printf("\nDATA BERHASIL DIUPDATE!\n");
-                        printf("  Harga baru: Rp%d\n", target->harga);
-                        printf("  Selesai: %s\n", target->tanggalSelesai);
                     }
                 }
             }
@@ -157,27 +140,9 @@ int main() {
                 if (isEmptyQueue(&antrian)) {
                     printf("\nAntrian kosong\n");
                 } else {
-                    printf("\n========== ANTRIAN EXPRESS ==========\n");
-                    Laundry* curr = antrian.front;
-                    int no = 1;
-                    while (curr) {
-                        if (strcmp(curr->jenis, "express") == 0) {
-                            printf("%d. ID:%d | %s | %.1fkg | Rp%d\n", no++, curr->id, curr->nama, curr->berat, curr->harga);
-                        }
-                        curr = curr->next;
-                    }
-                    if (no == 1) printf("Tidak ada\n");
-                    
-                    printf("\n========== ANTRIAN REGULER ==========\n");
-                    curr = antrian.front;
-                    no = 1;
-                    while (curr) {
-                        if (strcmp(curr->jenis, "reguler") == 0) {
-                            printf("%d. ID:%d | %s | %.1fkg | Rp%d\n", no++, curr->id, curr->nama, curr->berat, curr->harga);
-                        }
-                        curr = curr->next;
-                    }
-                    if (no == 1) printf("Tidak ada\n");
+                    shellSort(&antrian);
+                    simpanData(&antrian, &riwayat);
+                    tampilQueue(&antrian);
                 }
             }
             else if (pilih == 8) {
@@ -205,7 +170,7 @@ int main() {
             printf("+====================+\n");
             printf("Pilih: ");
             
-            scanf("%d", &pilih);
+            pilih = bacaInt("");
             
             if (pilih == 1) {
                 tampilQueue(&antrian);

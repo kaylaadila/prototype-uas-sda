@@ -12,10 +12,9 @@ int login() {
     printf("\n==============================\n");
     printf("      KELOLA LAUNDRY          \n");
     printf("==============================\n");
-    printf("Username: ");
-    scanf("%s", user);
-    printf("Password: ");
-    scanf("%s", pass);
+    
+    bacaString("Username: ", user, 30);
+    bacaString("Password: ", pass, 30);
     
     while (fscanf(f, "%s %s", fuser, fpass) != EOF) {
         if (strcmp(user, fuser) == 0 && strcmp(pass, fpass) == 0) {
