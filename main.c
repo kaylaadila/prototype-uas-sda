@@ -40,7 +40,14 @@ int main() {
                 bacaString("Nama: ", nama, MAX_NAMA);
                 berat = bacaFloat("Berat (kg): ");
                 if (berat < 2) berat = 2;
-                j = bacaInt("Jenis (1.Reguler/2.Express): ");
+                
+                do {
+                    j = bacaInt("Jenis (1.Reguler/2.Express): ");
+                    if (j != 1 && j != 2) {
+                        printf("Pilihan hanya 1 atau 2!\n");
+                    }
+                } while (j != 1 && j != 2);
+                
                 if (j == 1) strcpy(jenis, "reguler");
                 else strcpy(jenis, "express");
                 
@@ -107,19 +114,25 @@ int main() {
                         int j;
                         
                         printf("\nDATA LAMA: %s | %.1f kg | %s\n", target->nama, target->berat, target->jenis);
+                        
                         bacaString("Nama baru: ", namaBaru, MAX_NAMA);
+                        strcpy(target->nama, namaBaru);
+                        
                         beratBaru = bacaFloat("Berat baru (kg): ");
                         if (beratBaru < 2) beratBaru = 2;
-                        j = bacaInt("Jenis baru (1.Reguler/2.Express): ");
+                        target->berat = beratBaru;
+                        
+                        do {
+                            j = bacaInt("Jenis baru (1.Reguler/2.Express): ");
+                            if (j != 1 && j != 2) printf("Pilihan hanya 1 atau 2!\n");
+                        } while (j != 1 && j != 2);
+                        
                         if (j == 1) strcpy(jenisBaru, "reguler");
                         else strcpy(jenisBaru, "express");
-                        
-                        strcpy(target->nama, namaBaru);
-                        target->berat = beratBaru;
                         strcpy(target->jenis, jenisBaru);
-                        target->harga = hitungHarga(beratBaru, jenisBaru);
                         
-                        int tambahHari = (strcmp(jenisBaru, "express") == 0) ? 1 : 3;
+                        target->harga = hitungHarga(target->berat, target->jenis);
+                        int tambahHari = (strcmp(target->jenis, "express") == 0) ? 1 : 3;
                         hitungTanggalSelesai(target->tanggalMasuk, target->tanggalSelesai, tambahHari);
                         
                         simpanData(&antrian, &riwayat);
@@ -146,7 +159,12 @@ int main() {
                 }
             }
             else if (pilih == 8) {
-                tampilUrutBerdasarkanBerat(&antrian);
+                if (isEmptyQueue(&antrian)) {
+                    printf("\nAntrian kosong\n");
+                } else {
+                    mergeSortByWeight(&antrian);
+                    tampilQueue(&antrian);
+                }
             }
             else if (pilih == 9) {
                 tampilJadwal(&antrian, &riwayat);

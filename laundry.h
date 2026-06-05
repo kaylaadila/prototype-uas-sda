@@ -44,7 +44,7 @@ void pushStack(Stack* s, Laundry* node);
 void tampilStack(Stack* s);
 
 void shellSort(Queue* q);
-void tampilUrutBerdasarkanBerat(Queue *q);
+void mergeSortByWeight(Queue* q);
 void quickSortByDate(Laundry* arr[], int low, int high);
 void tampilJadwal(Queue* q, Stack* s);
 

@@ -7,15 +7,15 @@ void shellSort(Queue* q) {
     }
     
     Laundry* arr[100];
-    int count = 0;
+    int n = 0;
     Laundry* curr = q->front;
     while (curr) {
-        arr[count++] = curr;
+        arr[n++] = curr;
         curr = curr->next;
     }
     
-    for (int gap = count / 2; gap > 0; gap /= 2) {
-        for (int i = gap; i < count; i++) {
+    for (int gap = n / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < n; i++) {
             Laundry* temp = arr[i];
             int pTemp = (strcmp(temp->jenis, "express") == 0) ? 1 : 2;
             int j;
@@ -32,16 +32,16 @@ void shellSort(Queue* q) {
     }
     
     q->front = arr[0];
-    for (int i = 0; i < count - 1; i++) {
+    for (int i = 0; i < n - 1; i++) {
         arr[i]->next = arr[i+1];
     }
-    arr[count-1]->next = NULL;
-    q->rear = arr[count-1];
+    arr[n-1]->next = NULL;
+    q->rear = arr[n-1];
     
     printf("\n[Shell Sort] Antrian: EXPRESS dulu, baru REGULER\n");
 }
 
-void mergeByWeight(Laundry* arr[], int left, int mid, int right) {
+void merge(Laundry* arr[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
     Laundry* L[n1];
@@ -65,44 +65,37 @@ void mergeByWeight(Laundry* arr[], int left, int mid, int right) {
     while (j < n2) arr[k++] = R[j++];
 }
 
-void mergeSortByWeight(Laundry* arr[], int left, int right) {
+void mergeSort(Laundry* arr[], int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
-        mergeSortByWeight(arr, left, mid);
-        mergeSortByWeight(arr, mid + 1, right);
-        mergeByWeight(arr, left, mid, right);
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
     }
 }
 
-void tampilUrutBerdasarkanBerat(Queue *q) {
-    if (isEmptyQueue(q)) {
-        printf("\nAntrian kosong\n");
-        return;
-    }
+void mergeSortByWeight(Queue* q) {
+    if (q->count < 2) return;
     
-    int total = q->count;
-    Laundry** arr = (Laundry**)malloc(total * sizeof(Laundry*));
+    int n = q->count;
+    Laundry** arr = (Laundry**)malloc(n * sizeof(Laundry*));
     Laundry* curr = q->front;
-    for (int i = 0; i < total; i++) {
+    for (int i = 0; i < n; i++) {
         arr[i] = curr;
         curr = curr->next;
     }
     
-    mergeSortByWeight(arr, 0, total - 1);
+    mergeSort(arr, 0, n - 1);
     
-    printf("\n=== SORTING BERAT (TERBERAT -> TERINGAN) ===\n");
-    printf("No  Nama            Berat    Harga      Mesin\n");
-    printf("--- --------------- -------- ---------- -----\n");
-    
-    for (int i = 0; i < total; i++) {
-        char mesin[20];
-        if (arr[i]->berat <= 5) strcpy(mesin, "Kecil");
-        else if (arr[i]->berat <= 8) strcpy(mesin, "Sedang");
-        else if (arr[i]->berat <= 12) strcpy(mesin, "Besar");
-        else strcpy(mesin, "Split");
-        printf("%-3d %-15s %-8.1f %-10d %s\n", i+1, arr[i]->nama, arr[i]->berat, arr[i]->harga, mesin);
+    q->front = arr[0];
+    for (int i = 0; i < n - 1; i++) {
+        arr[i]->next = arr[i+1];
     }
+    arr[n-1]->next = NULL;
+    q->rear = arr[n-1];
     free(arr);
+    
+    printf("\n[Merge Sort] Diurutkan berdasarkan BERAT (terberat -> teringan)\n");
 }
 
 int compareDate(char *tgl1, char *tgl2) {

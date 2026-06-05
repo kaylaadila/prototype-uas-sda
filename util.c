@@ -34,56 +34,78 @@ void bacaString(char *pesan, char *target, int maxLen) {
     target[strcspn(target, "\n")] = 0;
 }
 
+int isKabisat(int year) {
+    if (year % 400 == 0) return 1;
+    if (year % 100 == 0) return 0;
+    if (year % 4 == 0) return 1;
+    return 0;
+}
+
+int getMaxDay(int month, int year) {
+    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+        return 31;
+    }
+    else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        return 30;
+    }
+    else {
+        if (isKabisat(year)) return 29;
+        else return 28;
+    }
+}
+
 void hitungTanggalSelesai(char *tglMasuk, char *tglSelesai, int tambahHari) {
     int day, month, year;
     sscanf(tglMasuk, "%d/%d/%d", &day, &month, &year);
     
-    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-        daysInMonth[1] = 29;
-    }
-    
     day += tambahHari;
-    while (day > daysInMonth[month - 1]) {
-        day -= daysInMonth[month - 1];
+    
+    while (day > getMaxDay(month, year)) {
+        day -= getMaxDay(month, year);
         month++;
         if (month > 12) {
             month = 1;
             year++;
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-                daysInMonth[1] = 29;
-            }
         }
     }
+    
     sprintf(tglSelesai, "%02d/%02d/%04d", day, month, year);
 }
 
 int validasiTanggal(char *tgl) {
     int day, month, year;
-    int jumlah = sscanf(tgl, "%d/%d/%d", &day, &month, &year);
     
-    if (jumlah != 3 || strlen(tgl) != 10) {
-        printf("Format salah! Gunakan DD/MM/YYYY (contoh: 15/11/2026)\n");
+    if (sscanf(tgl, "%d/%d/%d", &day, &month, &year) != 3) {
+        printf("Format salah! Gunakan DD/MM/YYYY\n");
         return 0;
     }
+    
     if (year < 1900 || year > 2100) {
         printf("Tahun harus 1900-2100\n");
         return 0;
     }
+    
     if (month < 1 || month > 12) {
         printf("Bulan harus 1-12\n");
         return 0;
     }
-    if (day < 1) return 0;
     
-    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-        daysInMonth[1] = 29;
-    }
-    if (day > daysInMonth[month - 1]) {
-        printf("Bulan %d hanya %d hari\n", month, daysInMonth[month - 1]);
+    if (day < 1) {
+        printf("Hari minimal 1\n");
         return 0;
     }
+    
+    int maxDay = getMaxDay(month, year);
+    
+    if (day > maxDay) {
+        if (month == 2 && day == 29) {
+            printf("Tahun %d BUKAN tahun kabisat, Februari hanya 28 hari\n", year);
+        } else {
+            printf("Bulan %d tahun %d hanya memiliki %d hari\n", month, year, maxDay);
+        }
+        return 0;
+    }
+    
     return 1;
 }
 
@@ -138,5 +160,5 @@ void freeAllMemory(Queue* q, Stack* s) {
     q->rear = NULL;
     q->count = 0;
     s->top = -1;
-    printf("\nMemori dibebaskan: %d node\n", total);
+    printf("\nMemori dibebaskan: %d node laundry\n", total);
 }
