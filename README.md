@@ -198,6 +198,13 @@ Keterangan:
 ## Kontributor
 
 Proyek ini dikembangkan sebagai tugas akademik mata kuliah Struktur Data dan Algoritma menggunakan bahasa pemrograman C.
+|      Nama      |            Peran              |
+|----------------|-------------------------------|
+| Nama Anggota 1 | Project Manager / Dokumentasi |
+| Nama Anggota 2 | Implementasi Queue & Linked List |
+| Nama Anggota 3 | Implementasi Stack & File Handling |
+| Nama Anggota 4 | Implementasi Sorting Algorithm |
+| Nama Anggota 5 | Pengujian dan Debugging |
 
 ---
 
