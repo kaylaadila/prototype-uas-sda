@@ -20,12 +20,13 @@ int main() {
             printf("| 1. Tambah Laundry   |\n");
             printf("| 2. Tandai Selesai   |\n");
             printf("| 3. Edit Pesanan     |\n");
-            printf("| 4. Lihat Antrian    |\n");
-            printf("| 5. Lihat Riwayat    |\n");
-            printf("| 6. Daftar Harga     |\n");
-            printf("| 7. Antrian by Jenis |\n");
-            printf("| 8. Antrian by Berat |\n");
-            printf("| 9. Jadwal Ambil     |\n");
+            printf("| 4. Hapus Pesanan    |\n");
+            printf("| 5. Lihat Antrian    |\n");
+            printf("| 6. Lihat Riwayat    |\n");
+            printf("| 7. Daftar Harga     |\n");
+            printf("| 8. Antrian by Jenis |\n");
+            printf("| 9. Antrian by Berat |\n");
+            printf("|10. Jadwal Ambil     |\n");
             printf("| 0. Keluar           |\n");
             printf("+====================+\n");
             printf("Pilih: ");
@@ -141,15 +142,38 @@ int main() {
                 }
             }
             else if (pilih == 4) {
-                tampilQueue(&antrian);
+                if (isEmptyQueue(&antrian) && isEmptyStack(&riwayat)) {
+                    printf("\nTidak ada data laundry\n");
+                } else {
+                    printf("\n=== DAFTAR PESANAN ===\n");
+                    printf("\n--- ANTRIAN ---\n");
+                    Laundry* curr = antrian.front;
+                    int no = 1;
+                    while (curr) {
+                        printf("%d. ID:%d | %s | %s | %.1fkg\n", no++, curr->id, curr->nama, curr->jenis, curr->berat);
+                        curr = curr->next;
+                    }
+                    
+                    printf("\n--- RIWAYAT ---\n");
+                    no = 1;
+                    for (int i = riwayat.top; i >= 0; i--) {
+                        printf("%d. ID:%d | %s | %s | %.1fkg\n", no++, riwayat.data[i]->id, riwayat.data[i]->nama, riwayat.data[i]->jenis, riwayat.data[i]->berat);
+                    }
+                    
+                    int id = bacaInt("\nMasukkan ID pesanan yang akan dihapus: ");
+                    hapusPesanan(&antrian, &riwayat, id);
+                }
             }
             else if (pilih == 5) {
-                tampilStack(&riwayat);
+                tampilQueue(&antrian);
             }
             else if (pilih == 6) {
-                lihatHarga();
+                tampilStack(&riwayat);
             }
             else if (pilih == 7) {
+                lihatHarga();
+            }
+            else if (pilih == 8) {
                 if (isEmptyQueue(&antrian)) {
                     printf("\nAntrian kosong\n");
                 } else {
@@ -158,7 +182,7 @@ int main() {
                     tampilQueue(&antrian);
                 }
             }
-            else if (pilih == 8) {
+            else if (pilih == 9) {
                 if (isEmptyQueue(&antrian)) {
                     printf("\nAntrian kosong\n");
                 } else {
@@ -166,7 +190,7 @@ int main() {
                     tampilQueue(&antrian);
                 }
             }
-            else if (pilih == 9) {
+            else if (pilih == 10) {
                 tampilJadwal(&antrian, &riwayat);
             }
             else if (pilih == 0) {

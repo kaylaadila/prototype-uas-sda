@@ -37,6 +37,7 @@ int isEmptyQueue(Queue* q);
 void enqueue(Queue* q, Laundry* node);
 Laundry* dequeueByID(Queue* q, int id);
 void tampilQueue(Queue* q);
+int hapusPesanan(Queue* q, Stack* s, int id);
 
 void initStack(Stack* s);
 int isEmptyStack(Stack* s);
