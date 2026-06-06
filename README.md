@@ -11,22 +11,22 @@ Sistem Manajemen Laundry adalah aplikasi berbasis bahasa C yang digunakan untuk 
 
 ## Struktur Data yang Digunakan
 
-| Struktur Data      | Implementasi         | Fungsi                                                |
-| ------------------ | -------------------- | ----------------------------------------------------- |
-| Singly Linked List | `struct Laundry`     | Menyimpan data setiap pesanan laundry                 |
-| Queue              | `Queue`              | Mengelola antrian laundry yang sedang diproses (FIFO) |
-| Stack              | `Stack`              | Menyimpan riwayat laundry yang telah selesai (LIFO)   |
-| Array of Pointer   | `Laundry* data[100]` | Menyimpan data sementara untuk proses sorting         |
+|  Struktur Data     |              Digunakan Untuk                   |
+|--------------------|------------------------------------------------|
+| Singly Linked List | Menyimpan data pesanan laundry secara dinamis  |
+| Queue (FIFO)       | Mengelola antrian laundry yang sedang diproses |
+| Stack (LIFO)       | Menyimpan riwayat laundry yang telah selesai   |
+| Array of Pointer   | Menampung data sementara saat proses sorting   |
 
 ---
 
 ## Algoritma yang Digunakan
 
-| Algoritma         | Lokasi Implementasi      | Tujuan                                                                         |
-| ----------------- | ------------------------ | ------------------------------------------------------------------------------ |
-| Shell Sort        | `shellSort()`            | Mengurutkan antrian berdasarkan prioritas jenis laundry (Express lebih dahulu) |
-| Merge Sort        | `mergeSortByWeight()`    | Mengurutkan data berdasarkan berat laundry dari terbesar ke terkecil           |
-| Quick Sort        | `quickSortByDate()`      | Mengurutkan jadwal pengambilan berdasarkan tanggal selesai tercepat            |
+| Algoritma    | Kompleksitas  |                                             Digunakan Untuk                                      |
+|--------------|---------------|--------------------------------------------------------------------------------------------------|
+| Shell Sort   | O(n²)         | Mengurutkan antrian berdasarkan prioritas jenis laundry (Express lebih dahulu dibanding Reguler) |
+| Merge Sort   | O(n log n)    | Mengurutkan data laundry berdasarkan berat dari terbesar ke terkecil                             |
+| Quick Sort   | O(n log n)    | Mengurutkan jadwal pengambilan berdasarkan tanggal selesai tercepat                              |
 
 ---
 
