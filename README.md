@@ -27,7 +27,7 @@ Sistem Manajemen Laundry adalah aplikasi berbasis bahasa C yang digunakan untuk 
 | Shell Sort        | `shellSort()`            | Mengurutkan antrian berdasarkan prioritas jenis laundry (Express lebih dahulu) |
 | Merge Sort        | `mergeSortByWeight()`    | Mengurutkan data berdasarkan berat laundry dari terbesar ke terkecil           |
 | Quick Sort        | `quickSortByDate()`      | Mengurutkan jadwal pengambilan berdasarkan tanggal selesai tercepat            |
-| Sequential Search | Edit dan Hapus Pesanan   | Mencari data laundry berdasarkan ID                                            |
+| Linear Search     | Edit dan Hapus Pesanan   | Mencari data laundry berdasarkan ID                                            |
 | Date Validation   | `validasiTanggal()`      | Memastikan format dan nilai tanggal valid                                      |
 | Date Calculation  | `hitungTanggalSelesai()` | Menghitung tanggal selesai laundry secara otomatis                             |
 
