@@ -24,8 +24,8 @@ Sistem Manajemen Laundry adalah aplikasi berbasis bahasa C yang digunakan untuk 
 
 | Algoritma    | Kompleksitas  |                                             Digunakan Untuk                                      |
 |--------------|---------------|--------------------------------------------------------------------------------------------------|
-| Shell Sort   | O(n²)         | Mengurutkan antrian berdasarkan prioritas jenis laundry (Express lebih dahulu dibanding Reguler) |
-| Merge Sort   | O(n log n)    | Mengurutkan data laundry berdasarkan berat dari terbesar ke terkecil                             |
+| Shell Sort   | O(n^1.25) - O(n^1.5)    | Mereorganisasi antrean aktif berdasarkantingkat urgensi layanan |
+| Merge Sort   | O(n log n)    | menyajikan visualisasi daftar pesanan secara menurun berdasarkan bobot cucian yang paling berat                            |
 | Quick Sort   | O(n log n)    | Mengurutkan jadwal pengambilan berdasarkan tanggal selesai tercepat                              |
 
 ---
