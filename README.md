@@ -75,7 +75,6 @@ Sistem Manajemen Laundry adalah aplikasi berbasis bahasa C yang digunakan untuk 
 └── README.md
 ```
 
-> Nama file implementasi dapat disesuaikan dengan struktur repository yang digunakan.
 
 ---
 
@@ -85,13 +84,13 @@ Pastikan compiler GCC telah terpasang.
 
 ### Linux / macOS
 
-```bash
+
 gcc *.c -o laundry
 ```
 
 ### Windows (MinGW)
 
-```bash
+
 gcc *.c -o laundry.exe
 ```
 
@@ -101,13 +100,13 @@ gcc *.c -o laundry.exe
 
 ### Linux / macOS
 
-```bash
+
 ./laundry
 ```
 
 ### Windows
 
-```bash
+
 laundry.exe
 ```
 
