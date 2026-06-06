@@ -86,15 +86,15 @@ Pastikan compiler GCC telah terpasang.
 
 
 gcc *.c -o laundry
-```
+
 
 ### Windows (MinGW)
 
 
 gcc *.c -o laundry.exe
-```
 
----
+
+
 
 ## Cara Menjalankan Program
 
@@ -102,26 +102,26 @@ gcc *.c -o laundry.exe
 
 
 ./laundry
-```
+
 
 ### Windows
 
 
 laundry.exe
-```
+
 
 Sebelum menjalankan program, pastikan file berikut tersedia:
 
 ```text
 akun.txt
-```
+
 
 Contoh isi:
 
 ```text
 admin admin123
 user user123
-```
+
 
 ---
 
