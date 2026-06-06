@@ -27,53 +27,11 @@ Sistem Manajemen Laundry adalah aplikasi berbasis bahasa C yang digunakan untuk 
 | Shell Sort        | `shellSort()`            | Mengurutkan antrian berdasarkan prioritas jenis laundry (Express lebih dahulu) |
 | Merge Sort        | `mergeSortByWeight()`    | Mengurutkan data berdasarkan berat laundry dari terbesar ke terkecil           |
 | Quick Sort        | `quickSortByDate()`      | Mengurutkan jadwal pengambilan berdasarkan tanggal selesai tercepat            |
-| Linear Search     | Edit dan Hapus Pesanan   | Mencari data laundry berdasarkan ID                                            |
-| Date Validation   | `validasiTanggal()`      | Memastikan format dan nilai tanggal valid                                      |
-| Date Calculation  | `hitungTanggalSelesai()` | Menghitung tanggal selesai laundry secara otomatis                             |
 
 ---
 
-## Fitur Utama
-
-### Admin
-
-* Login Admin
-* Menambah pesanan laundry
-* Menandai laundry selesai
-* Mengedit data pesanan
-* Menghapus pesanan
-* Melihat antrian laundry
-* Melihat riwayat laundry
-* Melihat daftar harga
-* Mengurutkan antrian berdasarkan jenis layanan
-* Mengurutkan antrian berdasarkan berat laundry
-* Melihat jadwal pengambilan laundry
-* Penyimpanan data otomatis ke file
-
-### User
-
-* Login User
-* Melihat antrian laundry
-* Melihat daftar harga
-* Melihat jadwal pengambilan
 
 ---
-
-## Struktur File
-
-```text
-.
-├── main.c
-├── laundry.h
-├── queue.c
-├── stack.c
-├── sorting.c
-├── utility.c
-├── auth_file.c
-├── akun.txt
-├── data_laundry.txt
-└── README.md
-```
 
 
 ---
@@ -84,44 +42,44 @@ Pastikan compiler GCC telah terpasang.
 
 ### Linux / macOS
 
-
+```bash
 gcc *.c -o laundry
-
+```
 
 ### Windows (MinGW)
 
-
+```bash
 gcc *.c -o laundry.exe
+```
 
-
-
+---
 
 ## Cara Menjalankan Program
 
 ### Linux / macOS
 
-
+```bash
 ./laundry
-
+```
 
 ### Windows
 
-
+```bash
 laundry.exe
-
+```
 
 Sebelum menjalankan program, pastikan file berikut tersedia:
 
 ```text
 akun.txt
-
+```
 
 Contoh isi:
 
 ```text
 admin admin123
 user user123
-
+```
 
 ---
 
@@ -194,16 +152,13 @@ Keterangan:
 
 ---
 
-## Kontributor
-
-Proyek ini dikembangkan sebagai tugas akademik mata kuliah Struktur Data dan Algoritma menggunakan bahasa pemrograman C.
-|      Nama      |            Peran              |
-|----------------|-------------------------------|
-| Nama Anggota 1 | Project Manager / Dokumentasi |
-| Nama Anggota 2 | Implementasi Queue & Linked List |
-| Nama Anggota 3 | Implementasi Stack & File Handling |
-| Nama Anggota 4 | Implementasi Sorting Algorithm |
-| Nama Anggota 5 | Pengujian dan Debugging |
+|       Nama     |            Peran           |
+|----------------|----------------------------|
+| Nama Anggota 1 | NIM Anggota 1 | Project Manager / Dokumentasi |
+| Nama Anggota 2 | NIM Anggota 2 | Implementasi Queue & Linked List |
+| Nama Anggota 3 | NIM Anggota 3 | Implementasi Stack & File Handling |
+| Nama Anggota 4 | NIM Anggota 4 | Implementasi Sorting Algorithm |
+| Nama Anggota 5 | NIM Anggota 5 | Pengujian dan Debugging |
 
 ---
 
