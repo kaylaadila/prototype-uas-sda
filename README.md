@@ -154,11 +154,10 @@ Keterangan:
 
 |       Nama     |            Peran           |
 |----------------|----------------------------|
-| Nama Anggota 1 | NIM Anggota 1 | Project Manager / Dokumentasi |
-| Nama Anggota 2 | NIM Anggota 2 | Implementasi Queue & Linked List |
-| Nama Anggota 3 | NIM Anggota 3 | Implementasi Stack & File Handling |
-| Nama Anggota 4 | NIM Anggota 4 | Implementasi Sorting Algorithm |
-| Nama Anggota 5 | NIM Anggota 5 | Pengujian dan Debugging |
+| Abrar Muda | 250810701100080 | Implementasi file I/O, login, simpan & load data, README |
+| Arinal Haq | 250810701100073 | Implementasi sorting algorithm (Shell, Merge, Quick), fitur hapus pesanan, analisis algoritma, laporan |
+| Kayla Adila Farija Atika| 250810701100067 | Implementasi Queue dan Stack, fitur edit pesanan, menu utama, merancang seluruh tanpilan CLI program  |
+| Syella Zikra Arifa | 250810701100014 | Implementasi validasi input, validasi tanggal, dokumentasi|
 
 ---
 
@@ -166,6 +165,6 @@ Keterangan:
 
 MIT License
 
-Copyright (c) 2025
+Copyright (c) 2026 Kelompok 6 - Data Structures and Algorithms Lab
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software to use, modify, and distribute it for educational purposes, provided that the original authors are credited.
