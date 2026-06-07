@@ -156,7 +156,7 @@ Keterangan:
 |----------------|----------------------------|
 | Abrar Muda | Implementasi file I/O, login, simpan & load data, README |
 | Arinal Haq  | Implementasi sorting algorithm (Shell, Merge, Quick), fitur hapus pesanan, analisis dan pemilihan struktur data, laporan |
-| Kayla Adila Farija Atika | Implementasi Queue dan Stack, fitur edit pesanan, menu utama, implementasi struktur data, dan merancang seluruh tanpilan CLI program  |
+| Kayla Adila Farija Atika | Implementasi Queue dan Stack, fitur edit pesanan, menu utama, implementasi struktur data, dan merancang seluruh tampilan CLI program  |
 | Syella Zikra Arifa | Implementasi validasi input, validasi tanggal, dokumentasi|
 
 ---
